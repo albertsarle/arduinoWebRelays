@@ -1,7 +1,3 @@
-/*
-http://arduinotronics.blogspot.com.es/2013/01/working-with-sainsmart-5v-relay-board.html
- */
-
 #include <SPI.h>
 #include <Ethernet.h>
 #include <dht11.h>
@@ -84,42 +80,6 @@ void webServerDaemon()
 
           Serial.println(HttpHeader);
 
-          /*
-          int updateStatus = HttpHeader.indexOf("s=1");
-          Serial.println("Status = ");            
-          Serial.println(updateStatus);                      
-          if (updateStatus>0) {
-            int p1 = HttpHeader.indexOf("l1=on");
-            Serial.println("P1 = "+ p1);            
-            if (p1>=0) {
-              digitalWrite(relayPin1, LOW);   
-              lightStatus1 = 1;
-              Serial.println("Encenem el llum 1 ");            
-            } 
-            else 
-            {
-              digitalWrite(relayPin1, HIGH);  
-              lightStatus1 = 0;
-              Serial.println("Apaguem el llum 1 ");            
-
-            }
-            int p2 = HttpHeader.indexOf("l2=on"); 
-            Serial.println("P2 = ");            
-            Serial.println(p2);                        
-            if (p2>0) {
-              digitalWrite(relayPin2, LOW);   
-              lightStatus2 = 1;
-              Serial.println("Encenem el llum 2 ");            
-            } 
-            else 
-            {
-              digitalWrite(relayPin2, HIGH);  
-              lightStatus2 = 0;
-              Serial.println("Apaguem el llum 2 ");            
-
-            } 
-          }
-          */
           int api = HttpHeader.indexOf("/api/");
           
           String apiCallback;           
@@ -229,7 +189,8 @@ void webServerDaemon()
   
             client.println("<div class=\"block switch ");
             client.println(classLightStatus2);
-            client.println("\" id=\"switch2\">water is <span>");
+            client.println("\" id=\"switch2\">water is d
+            <span>");
             client.println(classLightStatus2);
             client.println("</span></div>");
   
