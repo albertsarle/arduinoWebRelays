@@ -6,15 +6,25 @@
 	<meta name="author" content="albertsarle@gmail.com">
 	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script src="http://dl.dropboxusercontent.com/u/1834023/arduino/temp.js"></script>
-	<link href="http://dl.dropboxusercontent.com/u/1834023/arduino/temp.css" rel="stylesheet" type="text/css" />
+	<link href="temp.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div id="container">
-		<div class="block temperature">out 0.0 °C</div>
-		<div class="block temperature">in 202.6 °C</div>
-		<div class="block" id="humidity">0.0 %</div>
-		<div class="block switch off" id="switch1">heat is <span>off</span></div>
-		<div class="block switch on" id="switch2">water is <span>on</span></div>
+		<!--
+		<div class="data transparent_class">Divendres, 3 de gener </div>
+		-->
+		<div class="data transparent_class">
+			<table width="100%">
+				<tr>
+					<td width="33%">21°<p class="desc">Interior</p></td>
+					<td width="33%">47%<p class="desc">Humitat</p></td>
+					<td width="33%">11°<p class="desc">Exterior</p></td>
+				</tr>
+			</table>
+		</div>
+		<div class="switch off transparent_class" id="switch1">heat is <span>off</span></div>
+		<br style="clear:both">
+		<div class="switch on transparent_class" id="switch2">water is <span>on</span></div>
 	</div>
 </body>
 </html>

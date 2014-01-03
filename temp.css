@@ -1,41 +1,72 @@
+
+
+body {
+  background-image:url('http://dl.dropboxusercontent.com/u/1834023/arduino/fons1.jpg');
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+  background-position:0 -125px;   
+  color:white;
+  text-transform:uppercase;
+} 
+
+
 #container {
   width:100%;height:100%;
   font-family: 'Open Sans', sans-serif;
 }
-.block {
+.data {
   width:100%;
   text-align:center;
   padding:10px;
-  font-size:96px;
+  margin:0 0 15px 0;
+  font-size:20px;
+  background-color:black;
+}
+
+.transparent_class {
+  /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+
+  /* IE 5-7 */
+  filter: alpha(opacity=50);
+
+  /* Netscape */
+  -moz-opacity: 0.5;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.5;
+
+  /* Good browsers */
+  opacity: 0.5;
+}
+.data table td 
+{
+  font-size:48px;  
+}
+
+.desc{
+  text-align:center;
+  font-size:16px;
+  margin:0;
 }
 .temperature {
-  font-size:96px;
   color: #757580;
 }
 .humidity {color: #757580;}
+
 .switch {
+  width:100%;
+  text-align:center;
+  padding:10px;
   font-size:48px;
+  background-color:black;
+  float:left;
+
   color:#fff;
   text-transform:uppercase;
-  background-color: red;
- 
-margin-top:5px;
-
-/* 
--webkit-border-radius: 4px;
- -moz-border-radius: 4px;
- border-radius: 4px;
- border: solid 1px #20538D;
- text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
- -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
- -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
- box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
-*/
+  margin-top:5px;
 }
 .switch:active {
-
-
-
 
 	-moz-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
 	-webkit-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
@@ -54,13 +85,19 @@ margin-top:5px;
   /*position:relative;
   top:3px;*/
 }
-.on {background-color: green;}
-/*.off {background-color: red;}*/
+.on {background-color: back;}
+.off {background-color: back;}
 .switch span {
 	margin:0 10px 0 0 ;padding:0 25px 0 0;
 }
+
+#switch1 {
+  clear:both;
+  margin-top:275px; 
+}
+
 .loading {
-  background-image:url('http://ximples.com/loading.gif');
+  background-image:url('http://dl.dropboxusercontent.com/u/1834023/arduino/loading.gif');
   background-repeat:no-repeat;
   background-position:right center;
 }
