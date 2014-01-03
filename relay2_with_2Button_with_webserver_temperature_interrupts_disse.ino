@@ -350,14 +350,14 @@ void setup() {
   buttonRelaysInit();
   initWebServer();
 
-  attachInterrupt(0, debounceInterrupt1, FALLING);
-  attachInterrupt(1, debounceInterrupt2, FALLING);
+  //attachInterrupt(0, debounceInterrupt1, FALLING);
+  //attachInterrupt(1, debounceInterrupt2, FALLING);
   lightStatus1 =0;
   lightStatus2 =0;  
 }
 
 void loop() {
-  //processRelays();
+  processRelays();
   temperature();
   webServerDaemon(); 
   delay(100);       
