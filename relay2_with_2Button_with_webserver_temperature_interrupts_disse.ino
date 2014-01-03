@@ -28,9 +28,9 @@ int LM35_2_Pin = 1;
 byte mac[] = { 
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 byte ip[] = { 
-  192,168, 1, 3 };
+  192,168, 0, 25 };
 byte gateway[] ={ 
-  192, 168, 1, 1 };
+  192, 168, 0, 21 };
 EthernetServer server(80);
 String HttpHeader = String(MaxHeaderLength); 
 
@@ -40,6 +40,9 @@ int switchPin1 = 2;   // switch button input
 int switchPin2 = 3;   // switch button input
 int relayPin1 = 7;   // IN1 connected to digital pin 7
 int relayPin2 = 8;   // IN2 connected to digital pin 8
+int relayLed1 = 9;   
+int relayLed2 = 10;   
+
 
 
 volatile int val1 = 0;    // el valor que recollim del pin d'entrada
@@ -100,13 +103,15 @@ void webServerDaemon()
               int p1 = HttpHeader.indexOf("s=1");
 
               if (p1>=0) {
-                digitalWrite(relayPin1, LOW);   
+                digitalWrite(relayPin1, LOW);
+                digitalWrite(relayLed1, HIGH); 
                 lightStatus1 = 1;
                 apiCallback = "callBack(1, 1);";                  
               } 
               else 
               {
                 digitalWrite(relayPin1, HIGH);  
+                digitalWrite(relayLed1, LOW);   
                 lightStatus1 = 0;
                 apiCallback = "callBack(1, 0);";
 
@@ -119,12 +124,14 @@ void webServerDaemon()
               int p2 = HttpHeader.indexOf("s=1"); 
               if (p2>0) {
                 digitalWrite(relayPin2, LOW);   
+                digitalWrite(relayLed2, HIGH);               
                 lightStatus2 = 1;
                 apiCallback = "callBack(2, 1);";
               } 
               else 
               {
                 digitalWrite(relayPin2, HIGH);  
+                digitalWrite(relayLed2, LOW);   
                 lightStatus2 = 0;
                 apiCallback = "callBack(2, 0);";                  
               } 
@@ -164,32 +171,32 @@ void webServerDaemon()
             client.println("<script src=\"http://dl.dropboxusercontent.com/u/1834023/arduino/temp.js\"></script>");
             client.println("<link href=\"http://dl.dropboxusercontent.com/u/1834023/arduino/temp.css\" rel=\"stylesheet\" type=\"text/css\" />");
             client.println("</head><body><div id=\"container\">");
-            client.println("<div class=\"block temperature\">out ");
+            client.println("<div class=\"data transparent_class\"><table width=\"100%\"><tr><td width=\"33%\">");
 
             char buffer[10];
             String temperaturaS = dtostrf(temperatura, 5, 1, buffer);            
             client.println(temperaturaS);
 
-            client.println(" °C</div>");
-            client.println("<div class=\"block temperature\">in ");
-
+            client.println(" °<p class=\"desc\">Interior</p></td><td width=\"33%\">");
+            
             String LM35_1S = dtostrf(LM35_1, 5, 1, buffer);            
             client.println(LM35_1S);
-
-            client.println(" °C</div>");
-            client.println("<div class=\"block\" id=\"humidity\">");
+            
+            client.println(" %<p class=\"desc\">Humitat</p></td><td width=\"33%\">");
 
             String humitatS = dtostrf(humitat, 5, 1, buffer);            
             client.println(humitatS);
 
-            client.println(" %</div>");
-            client.println("<div class=\"block switch ");
+            client.println("°<p class=\"desc\">Exterior</p></td></tr></table></div>");
+            
+            
+            client.println("<div class=\"switch transparent_class ");
             client.println(classLightStatus1);
             client.println("\" id=\"switch1\">heat is <span>");
             client.println(classLightStatus1);
             client.println("</span></div>");
 
-            client.println("<div class=\"block switch ");
+            client.println("<div class=\"switch transparent_class ");
             client.println(classLightStatus2);
             client.println("\" id=\"switch2\">water is <span>");
             client.println(classLightStatus2);
@@ -230,10 +237,15 @@ void buttonRelaysInit() {
 
   pinMode(relayPin1, OUTPUT);      // sets the digital pin as output
   pinMode(relayPin2, OUTPUT);      // sets the digital pin as output
+  pinMode(relayLed1, OUTPUT);      // sets the digital pin as output
+  pinMode(relayLed2, OUTPUT);      // sets the digital pin as output
+  
 
   digitalWrite(relayPin1, HIGH);        // Prevents relays from starting up engaged
   digitalWrite(relayPin2, HIGH);        // Prevents relays from starting up engaged
-
+  digitalWrite(relayLed1, LOW);
+  digitalWrite(relayLed2, LOW);
+  
   buttonState1 = digitalRead(switchPin1);   // read the initial state
   buttonState2 = digitalRead(switchPin2);   // read the initial state  
 }
@@ -248,11 +260,13 @@ void processRelays()
       Serial.println("Button 1 just pressed");
       if (lightStatus1 == 1){
           digitalWrite(relayPin1, HIGH);   // energizes the relay and lights the LEDx
+          digitalWrite(relayLed1, LOW);
           lightStatus1 = 0;
            Serial.println("Apaguem el llum 1 ");
          
       } else {
           digitalWrite(relayPin1, LOW);   // energizes the relay and lights the LEDx
+          digitalWrite(relayLed1, HIGH);
           lightStatus1 = 1;
            Serial.println("Engeguem el llum 1 ");
           
@@ -267,10 +281,12 @@ void processRelays()
       Serial.println("Button 2 just pressed");
       if (lightStatus2 == 1){
           digitalWrite(relayPin2, HIGH);   // energizes the relay and lights the LEDx
+          digitalWrite(relayLed2, LOW);
           lightStatus2 = 0;
            Serial.println("Engeguem el llum 2 ");
       } else {
           digitalWrite(relayPin2, LOW);   // energizes the relay and lights the LEDx
+          digitalWrite(relayLed2, HIGH);
           lightStatus2 = 1;
            Serial.println("Apaguem el llum 2 ");         
       }       
