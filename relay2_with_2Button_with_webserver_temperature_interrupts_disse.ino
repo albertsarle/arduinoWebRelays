@@ -189,18 +189,20 @@ void webServerDaemon()
 
             client.println("°<p class=\"desc\">Exterior</p></td></tr></table></div>");
             
+            client.println("</div>");
             
-            client.println("<div class=\"switch transparent_class ");
-            client.println(classLightStatus1);
-            client.println("\" id=\"switch1\">heat is <span>");
-            client.println(classLightStatus1);
-            client.println("</span></div>");
-
-            client.println("<div class=\"switch transparent_class ");
-            client.println(classLightStatus2);
-            client.println("\" id=\"switch2\">water is <span>");
-            client.println(classLightStatus2);
-            client.println("</span></div>");
+            client.println("<div id=\"footer\">");
+              client.println("<div class=\"switch transparent_class ");
+              client.println(classLightStatus1);
+              client.println("\" id=\"switch1\">heat is <span>");
+              client.println(classLightStatus1);
+              client.println("</span></div>");
+  
+              client.println("<div class=\"switch transparent_class ");
+              client.println(classLightStatus2);
+              client.println("\" id=\"switch2\">water is <span>");
+              client.println(classLightStatus2);
+              client.println("</span></div>");
 
             client.println("</div>");
             client.println("</body></html>");          
@@ -243,6 +245,7 @@ void buttonRelaysInit() {
 
   digitalWrite(relayPin1, HIGH);        // Prevents relays from starting up engaged
   digitalWrite(relayPin2, HIGH);        // Prevents relays from starting up engaged
+  
   digitalWrite(relayLed1, LOW);
   digitalWrite(relayLed2, LOW);
   
@@ -295,10 +298,8 @@ void processRelays()
     }
   }
  
- 
-  //Serial.println(val1);
   buttonState1 = val1;                 // save the new state in our variable
-  buttonState2 = val2;                 // save the new state in our variable 
+  buttonState2 = val2;                
 }
 
 
