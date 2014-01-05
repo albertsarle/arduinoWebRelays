@@ -40,8 +40,8 @@ int switchPin1 = 2;   // switch button input
 int switchPin2 = 3;   // switch button input
 int relayPin1 = 7;   // IN1 connected to digital pin 7
 int relayPin2 = 8;   // IN2 connected to digital pin 8
-int relayLed1 = 9;   
-int relayLed2 = 10;   
+int relayLed1 = 4;   
+int relayLed2 = 6;   
 
 
 
