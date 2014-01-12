@@ -8,57 +8,88 @@ body {
   background-size: 100%;
   color:white;
   text-transform:uppercase;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Verdana', sans-serif;
+  padding:0;
+  margin:0;
 } 
 
 #container {
   width:100%;height:100%;
 }
+table {
+  width:100%;
+  overflow:hidden; white-space: nowrap;
+}
+table td {
+  width:33%;
+}
+.dia {
+  width:100%;
+  text-align:center;
+  padding:20px 10px 25px 10px;
+  margin:0 0 10px 0;
+  font-size:40px;
+  background-color:black;
+}
+
 .data {
   width:100%;
   text-align:center;
   padding:10px;
-  margin:0 0 15px 0;
-  font-size:20px;
+  margin:0 0 5px 0;
   background-color:black;
 }
-
 .transparent_class {
   /* IE 8 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
 
-  /* IE 5-7 */
-  filter: alpha(opacity=50);
+  /* IE 6-7 */
+  filter: alpha(opacity=60);
 
   /* Netscape */
-  -moz-opacity: 0.5;
+  -moz-opacity: 0.6;
 
   /* Safari 1.x */
-  -khtml-opacity: 0.5;
+  -khtml-opacity: 0.6;
 
   /* Good browsers */
-  opacity: 0.5;
+  opacity: 0.6;
 }
-.data table td 
+.data table td.value
 {
-  font-size:48px;  
+  font-size:93px;  
+  vertical-align:bottom;
+  height:156px;
+  line-height: 90px;
+  letter-spacing:-5px;
 }
 
-.desc{
+td.desc{
   text-align:center;
   font-size:16px;
   margin:0;
+  font-size:25px;  
 }
-.temperature {
-  color: #757580;
+.humidity {
+  background-image: url("https://dl.dropboxusercontent.com/u/1834023/arduino/gota.png");
+  background-repeat: no-repeat;
+  background-position:center bottom;
+  background-size: auto 142px;  
+  font-size:36px !important;  
+  line-height: 90px !important;
+  opacity: 100%;
 }
-.humidity {color: #757580;}
+.graus {
+  font-size:65px !important;    
+  line-height: 115px !important;  
+  margin-left:-5px;
+}
 
 .switch {
   width:100%;
   text-align:center;
   padding:10px;
-  font-size:48px;
+  font-size:64px;
   background-color:black;
   float:left;
 
@@ -67,7 +98,6 @@ body {
   margin-top:5px;
 }
 .switch:active {
-
 	-moz-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
 	-webkit-box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
 	box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
@@ -81,9 +111,6 @@ body {
 	box-shadow: 0 0 4px 2px rgba(0,0,0,.3) inset;
 	position: relative;
 	top: 1px;
-
-  /*position:relative;
-  top:3px;*/
 }
 .on {background-color: back;}
 .off {background-color: back;}
@@ -105,7 +132,7 @@ body {
    position:fixed;
    left:0px;
    bottom:0px;
-   height:180px;
+   height:210px;
    width:100%;
 }
 

@@ -171,23 +171,25 @@ void webServerDaemon()
             client.println("<script src=\"http://dl.dropboxusercontent.com/u/1834023/arduino/temp.js\"></script>");
             client.println("<link href=\"http://dl.dropboxusercontent.com/u/1834023/arduino/temp.css\" rel=\"stylesheet\" type=\"text/css\" />");
             client.println("</head><body><div id=\"container\">");
-            client.println("<div class=\"data transparent_class\"><table width=\"100%\"><tr><td width=\"33%\">");
+            client.println("<div class=\"data transparent_class\"><table><tr><td class=\"value\">");
 
             char buffer[10];
             String temperaturaS = dtostrf(temperatura, 5, 1, buffer);            
             client.println(temperaturaS);
 
-            client.println(" °<p class=\"desc\">Interior</p></td><td width=\"33%\">");
+            client.println("<span class=\"graus\">°</span></td><td class=\"value\">");
             
             String LM35_1S = dtostrf(LM35_1, 5, 1, buffer);            
             client.println(LM35_1S);
             
-            client.println(" %<p class=\"desc\">Humitat</p></td><td width=\"33%\">");
+            client.println(" %</td><td class=\"value\">");
 
             String humitatS = dtostrf(humitat, 5, 1, buffer);            
             client.println(humitatS);
 
-            client.println("°<p class=\"desc\">Exterior</p></td></tr></table></div>");
+            client.println("<span class=\"graus\"></td></tr>");
+            client.println("<tr><td class=\"desc\">Interior</td><td class=\"desc\">Humitat</td><td class=\"desc\">Exterior<td></tr>");
+            client.println("</table></div>");
             
             client.println("</div>");
             

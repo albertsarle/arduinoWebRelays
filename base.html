@@ -10,16 +10,21 @@
 </head>
 <body>
 	<div id="container">
-		<!--
-		<div class="data transparent_class">Divendres, 3 de gener </div>
+	<!--
+		<div class="dia transparent_class" style="overflow:hidden; white-space: nowrap;">Divendres, 3 de gener</div>
 		-->
 		<div class="data transparent_class">
-			<table width="100%">
+			<table>
 				<tr>
-					<td width="33%">21°<p class="desc">Interior</p></td>
-					<td width="33%">47%<p class="desc">Humitat</p></td>
-					<td width="33%">11°<p class="desc">Exterior</p></td>
+					<td class="value">33<span class="graus">°</span></td>
+					<td class="value humidity">47%</td>
+					<td class="value">11<span class="graus">°</span></td>
 				</tr>
+				<tr>
+					<td class="desc">Interior</td>
+					<td class="desc">Humitat</td>
+					<td class="desc">Exterior</td>
+				</tr>				
 			</table>
 		</div>
 
@@ -27,8 +32,7 @@
 	<div id="footer">
 		<div class="switch off transparent_class" id="switch1">heat is <span>off</span></div>
 		<br style="clear:both">
-
 		<div class="switch on transparent_class" id="switch2">water is <span>on</span></div>		
-	</div>		
+	</div>
 </body>
 </html>
