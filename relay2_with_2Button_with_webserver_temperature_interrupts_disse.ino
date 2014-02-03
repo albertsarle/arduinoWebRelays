@@ -28,9 +28,9 @@ int LM35_2_Pin = 1;
 byte mac[] = { 
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
 byte ip[] = { 
-  192,168, 0, 25 };
+  192,168, 1, 3 };
 byte gateway[] ={ 
-  192, 168, 0, 21 };
+  192, 168, 1, 1 };
 EthernetServer server(80);
 String HttpHeader = String(MaxHeaderLength); 
 
@@ -174,20 +174,23 @@ void webServerDaemon()
             client.println("<div class=\"data transparent_class\"><table><tr><td class=\"value\">");
 
             char buffer[10];
-            String temperaturaS = dtostrf(temperatura, 5, 1, buffer);            
+            String temperaturaS = dtostrf(temperatura, 5, 0, buffer);            
             client.println(temperaturaS);
 
-            client.println("<span class=\"graus\">°</span></td><td class=\"value\">");
-            
-            String LM35_1S = dtostrf(LM35_1, 5, 1, buffer);            
-            client.println(LM35_1S);
-            
-            client.println(" %</td><td class=\"value\">");
+            client.println("<span class=\"graus\">°</span></td><td class=\"value humidity\">");
 
-            String humitatS = dtostrf(humitat, 5, 1, buffer);            
+            if (humitat> 100 ){
+                humitat = 100;
+            }
+            String humitatS = dtostrf(humitat, 5, 0, buffer);            
             client.println(humitatS);
 
-            client.println("<span class=\"graus\"></td></tr>");
+            client.println(" %</td><td class=\"value\">");
+
+            String LM35_1S = dtostrf(LM35_1, 5, 0, buffer);            
+            //client.println(LM35_1S);
+
+            client.println("<span class=\"graus\">-</td></tr>");
             client.println("<tr><td class=\"desc\">Interior</td><td class=\"desc\">Humitat</td><td class=\"desc\">Exterior<td></tr>");
             client.println("</table></div>");
             
