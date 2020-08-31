@@ -1,7 +1,7 @@
 
 
 body {
-  background-image:url('http://dl.dropboxusercontent.com/u/1834023/arduino/fons1.jpg');
+  background-image:url('https://albertsarle.com/calpasqual/fons1.jpg');
   background-repeat:repeat-y;
   background-attachment:fixed;
   background-position:0 -115px;   
@@ -71,7 +71,7 @@ td.desc{
   font-size:25px;  
 }
 .humidity {
-  background-image: url("https://dl.dropboxusercontent.com/u/1834023/arduino/gota.png");
+  background-image: url("https://albertsarle.com/calpasqual/gota.png");
   background-repeat: no-repeat;
   background-position:center bottom;
   background-size: auto 142px;  
@@ -123,7 +123,7 @@ td.desc{
 }
 
 .loading {
-  background-image:url('http://dl.dropboxusercontent.com/u/1834023/arduino/loading.gif');
+  background-image:url('https://albertsarle.com/calpasqual/loading.gif');
   background-repeat:no-repeat;
   background-position:right center;
 }
